@@ -8,12 +8,11 @@ class Display{
         this.valorActual = '';
         this.valorAnterior = '';
         this.signos ={
-            sumar:"+",
-            restar:"-",
-            dividir:"%",
-            multiplicar:"*",
+            sumar:'+',
+            restar:'-',
+            dividir:'%',
+            multiplicar:'x',
         }
-        
     }
 
     borrarTodo()
@@ -30,7 +29,7 @@ class Display{
     }
 
     agregarNumero(numero){
-        if (numero === '.' && this.valorActual.includes('.')) return
+        if (numero === '.' && this.valorActual.includes('.')) return 
         this.valorActual = this.valorActual.toString() + numero.toString();
         this.imprimirValores();
     }
@@ -44,7 +43,7 @@ class Display{
         const valorAnterior = parseFloat(this.valorAnterior);
         const valorActual = parseFloat(this.valorActual);
         
-        if (isNan(valorActual) && isNan(valorAnterior)) return
+        if (isNaN(valorActual) && isNaN(valorAnterior)) return 
         this.valorActual = this.calculador[this.tipoOperacion] (valorAnterior, valorActual);
     }
 
