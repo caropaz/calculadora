@@ -7,6 +7,13 @@ class Display{
         this.tipoOperacion = undefined;
         this.valorActual = '';
         this.valorAnterior = '';
+        this.signos ={
+            sumar:"+",
+            restar:"-",
+            dividir:"%",
+            multiplicar:"*",
+        }
+        
     }
 
     borrarTodo()
@@ -30,15 +37,17 @@ class Display{
     
     imprimirValores(){
         this.displayValorActual.textContent = this.valorActual;
-        this.displayValorAnterior.textContent = this.valorAnterior;
+        this.displayValorAnterior.textContent = `${this.valorAnterior} ${this.signos[this.tipoOperacion] || '' }`;
     }
 
     calcular(){
         const valorAnterior = parseFloat(this.valorAnterior);
         const valorActual = parseFloat(this.valorActual);
+        
         if (isNan(valorActual) && isNan(valorAnterior)) return
         this.valorActual = this.calculador[this.tipoOperacion] (valorAnterior, valorActual);
     }
+
     computar(tipo){
         this.tipoOperacion !== 'igual' && this.calcular();
         this.tipoOperacion = tipo;
